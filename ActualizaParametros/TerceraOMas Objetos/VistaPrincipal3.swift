@@ -3,16 +3,16 @@ import SwiftUI
 struct VistaPrincipal3: View {
     
     @EnvironmentObject var usuario: Usuario
-    @State var iSelection: Int?
+    @State var bShow = false
     
     var body: some View {
         NavigationView {
             VStack {
                 Text("Hello, \(usuario.miNombre)! tienes \(usuario.miEdad) años")
                 
-                NavigationLink(destination: SegundaVista3(), tag: 1, selection: $iSelection) {
+                NavigationLink(destination: SegundaVista3(bShow: $bShow), isActive: $bShow) {
                     Button("Vista 2") {
-                        iSelection = 1
+                        bShow = true
                     }
                     .padding(.top, 15)
                     .padding(.bottom, 15)

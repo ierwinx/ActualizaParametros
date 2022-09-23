@@ -2,16 +2,17 @@ import SwiftUI
 
 struct SegundaVista3: View {
     
-    @State var iSelection: Int?
+    @Binding var bShow: Bool
+    @State var bShow2: Bool = false
     
     var body: some View {
         VStack {
             Text("Estas en la vista 2")
-                
-            NavigationLink(destination: TerceraVista3(), tag: 1, selection: $iSelection) {
+            
+            NavigationLink(destination: TerceraVista3(bShow: $bShow), isActive: $bShow2) {
                 
                 Button("Vista 3") {
-                    iSelection = 1
+                    bShow2 = true
                 }
                 .padding(.top, 15)
                 .padding(.bottom, 15)
@@ -28,6 +29,6 @@ struct SegundaVista3: View {
 
 struct SegundaVista3_Previews: PreviewProvider {
     static var previews: some View {
-        SegundaVista3()
+        SegundaVista3(bShow: .constant(false))
     }
 }

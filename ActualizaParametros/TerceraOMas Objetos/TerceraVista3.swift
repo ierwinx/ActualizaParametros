@@ -3,6 +3,7 @@ import SwiftUI
 struct TerceraVista3: View {
     
     @EnvironmentObject var usuario: Usuario
+    @Binding var bShow: Bool
     
     var body: some View {
         VStack {
@@ -20,8 +21,7 @@ struct TerceraVista3: View {
             Spacer()
             
             Button("Cambiar información") {
-                usuario.miNombre = "Erwin Luz Leon"
-                usuario.miEdad = 31
+                bShow.toggle()
             }
             .padding()
             .foregroundColor(.white)
@@ -37,6 +37,6 @@ struct TerceraVista3: View {
 
 struct TerceraVista3_Previews: PreviewProvider {
     static var previews: some View {
-        TerceraVista3().environmentObject(Usuario())
+        TerceraVista3(bShow: .constant(false)).environmentObject(Usuario())
     }
 }
